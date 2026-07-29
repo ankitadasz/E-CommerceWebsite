@@ -1,0 +1,31 @@
+import { NavLink } from "react-router-dom";
+
+export const Header = () => {
+  return (
+    <header className="navbar">
+      <div className="logo-container">
+        <h1 className="logo">ANKÉ</h1>
+      </div>
+
+      <nav>
+       <ul className="list-container">
+  <li>
+    <NavLink className="nav-link" to="/">MEN</NavLink>
+  </li>
+
+  <li>
+    <NavLink className="nav-link" to="/women">WOMEN</NavLink>
+  </li>
+
+  <li>
+    <NavLink className="nav-link" to="/kids">ACCESSORIES</NavLink>
+  </li>
+
+  <li>
+    <NavLink className="nav-link" to="/cart">CART</NavLink>
+  </li>
+</ul>
+      </nav>
+    </header>
+  );
+};
