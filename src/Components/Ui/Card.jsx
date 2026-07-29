@@ -1,9 +1,8 @@
-import { CardData } from "../Layout/CardData"
-
+import { CardContainer } from "../Layout/CardContainer"
 export const Card = () =>{
     return(
         <div>
-        <CardData/>
+        <CardContainer/>
         </div>
     )
 }

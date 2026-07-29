@@ -4,7 +4,9 @@ export const Header = () => {
   return (
     <header className="navbar">
       <div className="logo-container">
-        <h1 className="logo">ANKÉ</h1>
+       <NavLink to="/" style={{textDecoration:"none"}}> 
+        <h1 className="logo" >ANKÉ</h1>
+        </NavLink>
       </div>
 
       <nav>
