@@ -7,41 +7,42 @@ import { Women } from "./Pages/Women";
 import { Accessories } from "./Pages/Accessories";
 import { Error } from "./Pages/Error";
 import { Auth } from "./Pages/Auth";
+import { ProtectedRoute } from "./Components/Layout/ProtectedRoute";
 const router = createBrowserRouter([
-  
-       {
+  {
     path: "/auth",
     element: <Auth />,
-  },{
-
-  
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />,
-    children: [
-    
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/men",
-        element: <Men />,
-      },
-      {
-        path: "/women",
-        element: <Women />,
-      },
-      {
-        path: "/accessories",
-        element: <Accessories />,
-      },
-      
-    ],
   },
 
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/",
+        element: <AppLayout />,
+        errorElement: <Error />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "/men",
+            element: <Men />,
+          },
+          {
+            path: "/women",
+            element: <Women />,
+          },
+          {
+            path: "/accessories",
+            element: <Accessories />,
+          },
+        ],
+      },
+    ],
+  },
 ]);
-
 const App = () => {
   return <RouterProvider router={router}></RouterProvider>;
 };
