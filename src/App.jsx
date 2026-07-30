@@ -6,12 +6,20 @@ import { Men } from "./Pages/Men";
 import { Women } from "./Pages/Women";
 import { Accessories } from "./Pages/Accessories";
 import { Error } from "./Pages/Error";
+import { Auth } from "./Pages/Auth";
 const router = createBrowserRouter([
-  {
+  
+       {
+    path: "/auth",
+    element: <Auth />,
+  },{
+
+  
     path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
+    
       {
         path: "/",
         element: <Home />,
@@ -31,6 +39,7 @@ const router = createBrowserRouter([
       
     ],
   },
+
 ]);
 
 const App = () => {
