@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../../Context/ThemeContext";
+import Switch from "../Layout/Switch";
 
 export const Header = () => {
-  const [isDark, setIsDark] = useState(true);
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
-  // useEffect(()=>{
-  //   console.log("Useeffect Called")
-  // },[isDark])
+   const { isDark, toggleTheme } = useTheme();
+
   return (
     <header className="navbar">
       <div className="logo-container">
@@ -20,7 +17,7 @@ export const Header = () => {
       <nav>
         <ul className="list-container">
           <li>
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link" to="/men">
               MEN
             </NavLink>
           </li>
@@ -32,7 +29,7 @@ export const Header = () => {
           </li>
 
           <li>
-            <NavLink className="nav-link" to="/kids">
+            <NavLink className="nav-link" to="/accessories">
               ACCESSORIES
             </NavLink>
           </li>
@@ -45,9 +42,10 @@ export const Header = () => {
           
         </ul>
       </nav>
-      <div>
-            <button onClick={toggleTheme}>{isDark ? "Light" : "Dark"}</button>
-          </div>
+    <Switch
+    checked={isDark}
+    onChange={toggleTheme}
+    />
     </header>
   );
 };

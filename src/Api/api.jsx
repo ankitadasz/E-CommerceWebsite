@@ -4,7 +4,6 @@ export const Api = axios.create({
 });
 export const getData = async() =>{
     const res = await Api.get("/products");
-    console.log(res.data)
     return res.data;
     
 }
