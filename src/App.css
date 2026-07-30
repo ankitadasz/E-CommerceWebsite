@@ -418,6 +418,7 @@ body{
     transition:all .25s ease;
     white-space:nowrap;
     box-shadow:0 6px 16px rgba(255,63,108,.2);
+    margin-left: 20px;
 }
 
 .search-btn:hover{
@@ -427,6 +428,23 @@ body{
 
 .search-btn:active{
     transform:translateY(0);
+}
+.clear-btn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  font-weight: 500;
+  color: #777;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: -45px;
+  z-index: 2;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.clear-btn:hover {
+  color: #222;
+  transform: scale(1.1);
 }
 
 @media(max-width:600px){
