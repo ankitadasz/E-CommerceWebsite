@@ -15,13 +15,12 @@ export const CardContainer = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [input, setInput] = useState("");
 
-  const searchInput = (value) =>{
-    const res=data.filter((products)=>{
-    return products.title.toLowerCase().includes(value.toLowerCase());
-      
-    })
+  const searchInput = (value) => {
+    const res = data.filter((products) => {
+      return products.title.toLowerCase().includes(value.toLowerCase());
+    });
     setProducts(res);
-  }
+  };
   useEffect(() => {
     if (data) {
       setProducts(data);
@@ -80,20 +79,36 @@ export const CardContainer = () => {
             Top Rated
           </button>
         </div>
-       <div className="search-bar">
-  <input
-    type="text"
-    className="search-input"
-    value={input}
-    onChange={(e) => {
-      setInput(e.target.value);
-    }}
-    placeholder="Search here..."
-  />
-  <button className="search-btn" onClick={() => searchInput(input)}>
-    Search
-  </button>
-</div>
+        <div className="search-bar">
+          <input
+            type="text"
+            className="search-input"
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+            placeholder="Search here..."
+            
+          />
+           <button
+  className="clear-btn"
+  onClick={() => {
+    setInput("");
+    setProducts(data);
+  }}
+>
+  ×
+</button>
+          <button
+            className="search-btn"
+            onClick={() => {
+              searchInput(input);
+            }}
+          >
+            Search
+          
+          </button>
+        </div>
 
         <p className="product-count">
           Showing <span>{products.length}</span> products
