@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { singleData } from "../Api/api";
 import { SkeletonCard } from "../Components/Ui/SkeletonCard";
+import { useCart } from "../Context/CartContext";
 import "../IndividualProduct.css";
 
 export const IndivisualProductData = () => {
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["product", id],
@@ -61,7 +63,10 @@ export const IndivisualProductData = () => {
             {data.description}
           </p>
 
-          <button className="add-cart-btn">
+          <button
+            className="add-cart-btn"
+            onClick={() => addToCart(data)}
+          >
             Add to Cart
           </button>
         </div>
