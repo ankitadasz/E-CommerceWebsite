@@ -16,13 +16,13 @@ export const Auth = () => {
   const { login, register } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setMessage("");
 
     if (isLogin) {
-      const result = login(email, password);
+      const result = await login(email, password);
 
       if (!result.success) {
         setMessage(result.message);
@@ -31,7 +31,7 @@ export const Auth = () => {
 
       navigate("/");
     } else {
-      const result = register(name, email, password);
+      const result = await register(name, email, password);
 
       if (!result.success) {
         setMessage(result.message);
@@ -137,11 +137,6 @@ export const Auth = () => {
           <button type="submit" className="auth-submit">
             {isLogin ? "Login" : "Register"}
           </button>
-          <div className="demo-credentials">
-  <p>Demo Account</p>
-  <span>Email: ankita@gmail.com</span>
-  <span>Password: 123456</span>
-</div>
         </form>
 
         <p className="auth-switch-text">
