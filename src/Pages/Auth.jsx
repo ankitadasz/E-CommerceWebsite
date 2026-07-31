@@ -137,6 +137,11 @@ export const Auth = () => {
           <button type="submit" className="auth-submit">
             {isLogin ? "Login" : "Register"}
           </button>
+          <div className="demo-credentials">
+  <p>Demo Account</p>
+  <span>Email: ankita@gmail.com</span>
+  <span>Password: 123456</span>
+</div>
         </form>
 
         <p className="auth-switch-text">
