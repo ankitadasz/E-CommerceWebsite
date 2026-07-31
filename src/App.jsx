@@ -9,6 +9,7 @@ import { Error } from "./Pages/Error";
 import { Auth } from "./Pages/Auth";
 import { ProtectedRoute } from "./Components/Layout/ProtectedRoute";
 import { IndivisualProductData } from "./Pages/IndivisualProductData";
+import { Cart } from "./Pages/Cart";
 const router = createBrowserRouter([
   {
     path: "/auth",
@@ -40,9 +41,15 @@ const router = createBrowserRouter([
             element: <Accessories />,
           },
           {
+            path: "/cart",
+            element: <Cart />,
+          },
+
+          {
             path: "/product/:id",
             element: <IndivisualProductData/>,
           },
+
         ],
       },
     ],

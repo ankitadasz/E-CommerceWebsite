@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { singleData } from "../Api/api";
@@ -8,6 +9,8 @@ import "../IndividualProduct.css";
 export const IndivisualProductData = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
+
+  const [message, setMessage] = useState(false);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["product", id],
@@ -32,8 +35,34 @@ export const IndivisualProductData = () => {
       maximumFractionDigits: 2,
     });
 
+  const handleAddToCart = () => {
+    addToCart(data);
+    setMessage(true);
+
+    setTimeout(() => {
+      setMessage(false);
+    }, 2000);
+  };
+
   return (
     <div className="product-page">
+
+      {message && (
+        <div className="cart-toast">
+          <div className="cart-toast-icon">✓</div>
+
+          <div>
+            <p className="cart-toast-title">
+              Added to Cart
+            </p>
+
+            <p className="cart-toast-text">
+              {data.title}
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="product-detail-card">
         <div className="product-detail-image">
           <img src={data.image} alt={data.title} />
@@ -65,7 +94,7 @@ export const IndivisualProductData = () => {
 
           <button
             className="add-cart-btn"
-            onClick={() => addToCart(data)}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </button>
