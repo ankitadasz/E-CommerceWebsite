@@ -8,6 +8,7 @@ import { Accessories } from "./Pages/Accessories";
 import { Error } from "./Pages/Error";
 import { Auth } from "./Pages/Auth";
 import { ProtectedRoute } from "./Components/Layout/ProtectedRoute";
+import { IndivisualProductData } from "./Pages/IndivisualProductData";
 const router = createBrowserRouter([
   {
     path: "/auth",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
           {
             path: "/accessories",
             element: <Accessories />,
+          },
+          {
+            path: "/product/:id",
+            element: <IndivisualProductData/>,
           },
         ],
       },

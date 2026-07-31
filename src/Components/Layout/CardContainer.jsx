@@ -5,6 +5,7 @@ import { CardDetail } from "./CardDetail";
 import { useEffect, useState } from "react";
 import { SkeletonCard } from "../Ui/SkeletonCard";
 import { FilterBar } from "./FilterBar";
+import { NavLink } from "react-router-dom";
 
 export const CardContainer = () => {
   const { data, isLoading, isError, error } = useQuery({
@@ -43,7 +44,7 @@ export const CardContainer = () => {
 
   if (isLoading) {
     return (
-      <div className="card-section">
+      <div className="card-section" >
         <div className="filter-bar">
           <div className="filter-toggle">
             <button className="filter-btn active">All Products</button>
@@ -89,8 +90,8 @@ export const CardContainer = () => {
   };
 
   return (
-    <div className="card-section">
-      <FilterBar
+  <div className="card-section">
+    <FilterBar
       activeFilter={activeFilter}
       input={input}
       setInput={setInput}
@@ -100,11 +101,18 @@ export const CardContainer = () => {
       clearSearch={clearSearch}
       searchInput={searchInput}
     />
-      <div className="card-box">
-        {products.map((product) => (
-          <CardDetail product={product} key={product.id} />
-        ))}
-      </div>
+
+    <div className="card-box">
+      {products.map((product) => (
+        <NavLink
+          to={`/product/${product.id}`}
+          key={product.id}
+          className="product-link"
+        >
+          <CardDetail product={product} />
+        </NavLink>
+      ))}
     </div>
-  );
+  </div>
+);
 };

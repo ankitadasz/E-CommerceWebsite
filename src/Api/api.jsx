@@ -7,3 +7,9 @@ export const getData = async() =>{
     return res.data;
     
 }
+export const singleData = async(id) =>{
+    const res=await Api.get(`/products/${id}`);
+    console.log(res);
+    return res.data;
+}
+

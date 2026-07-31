@@ -1,15 +1,19 @@
 import { createContext, useContext, useState } from "react";
-import usersData from "../Data/Users.json";
+import usersData from "../data/users.json";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const login = (email, password) => {
     const existingUser = usersData.find(
-      (user) =>
-        user.email === email && user.password === password
+      (item) =>
+        item.email === email &&
+        item.password === password
     );
 
     if (!existingUser) {
@@ -21,6 +25,11 @@ export const AuthProvider = ({ children }) => {
 
     setUser(existingUser);
 
+    localStorage.setItem(
+      "user",
+      JSON.stringify(existingUser)
+    );
+
     return {
       success: true,
     };
@@ -28,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = (name, email, password) => {
     const existingUser = usersData.find(
-      (user) => user.email === email
+      (item) => item.email === email
     );
 
     if (existingUser) {
@@ -45,8 +54,12 @@ export const AuthProvider = ({ children }) => {
       password,
     };
 
-    // For now, keep the newly registered user in state.
     setUser(newUser);
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(newUser)
+    );
 
     return {
       success: true,
@@ -55,6 +68,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (

@@ -633,6 +633,11 @@ body {
     background: var(--pink-hover);
     transform: translateY(-1px);
 }
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* =======================
         RESPONSIVE
 ======================= */

@@ -4,6 +4,7 @@ import { SkeletonCard } from "../Components/Ui/SkeletonCard";
 import { getData } from "../Api/api";
 import { FilterBar } from "../Components/Layout/FilterBar";
 import { CardDetail } from "../Components/Layout/CardDetail";
+import { NavLink } from "react-router-dom";
 
 export const Accessories = () => {
   const { data, isLoading, isError, error } = useQuery({
@@ -122,10 +123,15 @@ export const Accessories = () => {
 
       <div className="card-box">
         {products.map((product) => (
+          <NavLink  to={`/product/${product.id}`}
+      key={product.id}
+      className="product-link"
+    >
           <CardDetail
             product={product}
             key={product.id}
           />
+          </NavLink>
         ))}
       </div>
     </div>
