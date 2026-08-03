@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "anke-ecommerce",
   storageBucket: "anke-ecommerce.firebasestorage.app",
   messagingSenderId: "1000925175012",
-  appId: "YOUR_APP_ID",
+  appId: "1:1000925175012:web:84c4d6997c8895903d20f1",
 };
 
 const app = initializeApp(firebaseConfig);
